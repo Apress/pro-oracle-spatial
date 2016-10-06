@@ -1,0 +1,5 @@
+<!-- Listing 11-6 Controlling the data cache -->
+<spatial_data_cache
+  max_cache_size="32"
+  report_stats="false"
+/>

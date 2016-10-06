@@ -1,0 +1,7 @@
+<!-- Listing 11-5 Controling map image lifetime -->
+<save_images_at file_prefix="omsmap"
+  url="/mapviewer/images/"
+  path="../../../web/images"
+  life= "5"
+  recycle_interval="10"
+/>

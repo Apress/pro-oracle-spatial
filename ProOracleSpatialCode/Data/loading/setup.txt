@@ -1,0 +1,41 @@
+1. Create user SPATIAL
+
+create user spatial identified by spatial;
+grant resource, connect to spatial;
+
+2. Import all data sets
+
+imp spatial/spatial file=app_with_loc.dmp full=y
+imp spatial/spatial file=gc.dmp full=y
+imp spatial/spatial file=map_detailed.dmp full=y
+imp spatial/spatial file=map_large.dmp full=y
+imp spatial/spatial file=net.dmp full=y
+imp spatial/spatial file=styles.dmp full=y
+imp spatial/spatial file=zip.dmp full=y
+
+3. Load network metadata and map definitions
+
+insert into user_sdo_network_metadata
+  select * from my_network_metadata;
+commit;
+
+insert into user_sdo_styles
+  select * from my_styles;
+insert into user_sdo_themes
+  select * from my_themes;
+insert into user_sdo_maps
+  select * from my_maps;
+commit;
+
+4. Create PL/SQL tools
+
+create or replace function get_point_x(g sdo_geometry) return number is
+begin
+  return g.sdo_point.x;
+end;
+/
+create or replace function get_point_y(g sdo_geometry) return number is
+begin
+  return g.sdo_point.y;
+end;
+/

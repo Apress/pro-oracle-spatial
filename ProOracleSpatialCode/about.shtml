@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body>
+<h1>About the Authors</h1>
+<br>
+
+<table width="600" border="0">
+  <tr>
+    <td>
+<span style="font-weight: bold;">RAVI KOTHURI</span> holds a Ph.D. in computer science from the University of California, Santa Barbara, and has worked in spatial and multimedia research and development for the past 10 years. Currently, he serves as a principal member in the spatial development team of Oracle Corporation. He is responsible for several patented features in Oracle Spatial and has authored numerous articles for database conferences and journals. Ravi enjoys music, movies, and playing with his children in his spare time.<br>
+<br>	
+	</td>
+  </tr>
+  <tr>
+    <td>
+<span style="font-weight: bold;">ALBERT GODFRIND </span>has over 25
+years of experience in designing, developing, and deploying IT applications. His interest and enthusiasm for spatial information and geographical information systems started at Oracle when he discovered the spatial extensions of the Oracle database in 1998.
+Ever since, Albert has been &#8220;evangelizing&#8221; the use of spatial information
+both to GIS and IT communities across Europe, consulting with partners and customers, speaking at conferences, and designing and delivering
+in-depth technical training. Prior to joining Oracle Corporation, Albert held several positions in database engineering at Digital Equipment Corporation (DEC), where he worked on the development of the Rdb database system.<br>
+<br>	
+	</td>
+  </tr>
+  <tr>
+    <td>
+<span style="font-weight: bold;">EURO BEINAT</span> holds a Ph.D. in
+economics and a master&#8217;s degree in electronics and systems engineering. He has been involved in consultancy for over 10 years in evaluation and strategic advice in sectors ranging from IT, government, the oil industry, and large corporations. At present, he is
+the managing director of Geodan Mobile Solutions and holds a chair at the Vrije Universiteit of Amsterdam as director of the spatial information
+laboratory. His main skills combine geo-IT and the Internet, with an extensive competence in decision analysis and strategy.<br>
+<br>	
+	</td>
+  </tr>
+</table>
+
+</body>
+</html>

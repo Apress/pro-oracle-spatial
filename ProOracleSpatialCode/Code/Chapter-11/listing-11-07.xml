@@ -1,0 +1,11 @@
+<!-- Listing 11-7 Defining a permanent data source -->
+<map_data_source name="spatial10g"
+  jdbc_host="127.0.0.1"
+  jdbc_port="1521"
+  jdbc_sid="orcl101"
+  jdbc_user="spatial"
+  jdbc_password="!spatial"
+  jdbc_mode="thin"
+  max_connections="10"
+  number_of_mappers="3"
+/>

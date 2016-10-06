@@ -1,0 +1,308 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "geometry.h"  
+
+EXEC SQL INCLUDE SQLCA ;
+EXEC SQL INCLUDE oraca.h ;
+EXEC SQL BEGIN DECLARE SECTION ;
+#include "geometry.h"  
+EXEC SQL END   DECLARE SECTION ;
+
+#define DEBUG 1
+#define MAX_ORDINATES 32768
+
+struct Point
+{
+   double x;
+   double y;
+};
+typedef struct Point Point;
+
+
+EXEC SQL WHENEVER SQLERROR DO SqlError();
+
+void SqlError()
+{
+  char err_msg[128];
+  int buf_len, msg_len;
+
+  buf_len = sizeof (err_msg);
+  sqlglm(err_msg, &buf_len, &msg_len);
+  printf("SQL Error: %.*s\n", msg_len, err_msg);
+  exit(1);
+}
+
+void *MakeGeometry (
+       SDO_GEOMETRY **PgeometryObject,
+       SDO_GEOMETRY_ind **PgeometryObjectInd,
+       int    PgType,
+       int    PsrId,
+       long   PnElemInfo,
+       long   *PelemInfoArray,
+       long   PnOrdinates,
+       double *PordinateArray
+       )
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+  int    gType;
+  int    srId;
+  long   nElemInfo;
+  long   *elemInfoArray;
+  long   nOrdinates;
+  double *ordinateArray;
+  double *ordinateArraySection;
+  long   nOrdinatesSection;
+  double x, y, z;
+  SDO_GEOMETRY         *geometryObject ;
+  SDO_GEOMETRY_ind     *geometryObjectInd;
+  SDO_ORDINATE_ARRAY   *ordinateArrayObject ;
+  SDO_ELEM_INFO_ARRAY  *elemInfoArrayObject ;
+  SDO_POINT_TYPE       *pointObject;
+  SDO_POINT_TYPE_ind   *pointObjectInd;
+  EXEC SQL END DECLARE SECTION;
+  
+  long i;
+  
+  /* Copy parameters into the SQL declaration section */
+  gType =          PgType;
+  srId =           PsrId;
+  nElemInfo =      PnElemInfo;
+  elemInfoArray =  PelemInfoArray;
+  nOrdinates =	   PnOrdinates;
+  ordinateArray =  PordinateArray;
+  geometryObject = *PgeometryObject;
+  geometryObjectInd = *PgeometryObjectInd;
+  
+  if (DEBUG)
+    printf ("Constructing geometry: GTYPE:%d SRID:%d ELEM_INFO: [%d] ORDINATES: [%d]\n", 
+       gType, srId, nElemInfo, nOrdinates); 
+       
+  /* Allocate an SDO_GEOMETRY object */
+  if (geometryObject == 0) {
+    printf ("Allocate a geometry object in the object cache\n");
+    EXEC SQL ALLOCATE :geometryObject :geometryObjectInd;
+  }
+
+  /* Construct the SDO_ELEM_INFO_ARRAY object */
+  
+  /* Allocate an object of type SDO_ELEM_INFO_ARRAY */
+  EXEC SQL ALLOCATE :elemInfoArrayObject ;
+  /* Populate the SDO_ELEM_INFO_ARRAY object with the input array */
+  EXEC SQL FOR :nElemInfo COLLECTION APPEND :elemInfoArray TO :elemInfoArrayObject;
+  if (DEBUG)    
+     if (sqlca.sqlerrd[2] != nElemInfo)
+       printf ("  [***** error: only %d elem info stored - %d missing]\n", 
+         sqlca.sqlerrd[2], nElemInfo - sqlca.sqlerrd[2]);
+
+  /* Construct the SDO_ORDINATE_ARRAY object */
+  
+  /* NOTE: 
+     The COLLECTION SET statement is only able to append up to 32768 elements
+     at a time. So, we have to break the input into chunks of 32768 elements and
+     repeat the COLLECTION SET operation as many times as needed
+  */
+     
+  /* Allocate an object of type SDO_ORDINATE_ARRAY */
+  EXEC SQL ALLOCATE :ordinateArrayObject;
+  /* Populate the SDO_ORDINATE_ARRAY object with the input array */
+  for (i=0; i<nOrdinates; i=i+MAX_ORDINATES) {
+    nOrdinatesSection = nOrdinates - i;
+    if (nOrdinatesSection > MAX_ORDINATES)
+      nOrdinatesSection = MAX_ORDINATES;
+    ordinateArraySection = &ordinateArray[i];
+    if (DEBUG) 
+      printf ("adding %d ordinates [%d:%d]\n",nOrdinatesSection, i, i+nOrdinatesSection-1);
+    EXEC SQL FOR :nOrdinatesSection COLLECTION APPEND :ordinateArraySection TO:ordinateArrayObject;
+    if (DEBUG)    
+       if (sqlca.sqlerrd[2] != nOrdinatesSection)
+         printf ("  [***** error: only %d ordinates stored - %d missing]\n", 
+           sqlca.sqlerrd[2], nOrdinatesSection - sqlca.sqlerrd[2]);
+  }
+  
+  /* Construct the SDO_GEOMETRY object */
+  /* Set object attributes */
+  EXEC SQL OBJECT SET SDO_GTYPE, SDO_SRID, SDO_ELEM_INFO, SDO_ORDINATES 
+    OF :geometryObject 
+    TO :gType, :srId, :elemInfoArrayObject, :ordinateArrayObject;
+  
+  /* Set indicators */
+  pointObjectInd = &(geometryObjectInd->SDO_POINT);
+  geometryObjectInd->_atomic	   = 0;
+  geometryObjectInd->SDO_GTYPE     = 0;
+  geometryObjectInd->SDO_SRID      = 0 ;
+  geometryObjectInd->SDO_ELEM_INFO = 0;
+  geometryObjectInd->SDO_ORDINATES = 0;
+  pointObjectInd->_atomic	   = -1;
+
+  /* Free the SDO_ELEM_INFO_ARRAY and SDO_ORDINATE_ARRAY objects */
+  EXEC SQL FREE :elemInfoArrayObject ;
+  EXEC SQL FREE :ordinateArrayObject;
+
+  /* Return object and its indicators to the caller */   
+  *PgeometryObject = geometryObject;
+  *PgeometryObjectInd = geometryObjectInd;
+  
+}
+
+void MakePoint (
+       SDO_GEOMETRY **PgeometryObject,
+       SDO_GEOMETRY_ind **PgeometryObjectInd,
+       int    PgType,
+       int    PsrId,
+       double Px,
+       double Py,
+       double Pz
+       )
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+  int    gType;
+  int    srId;
+  double x, y, z;
+  SDO_GEOMETRY         *geometryObject ;
+  SDO_GEOMETRY_ind     *geometryObjectInd;
+  SDO_POINT_TYPE       *pointObject;
+  SDO_POINT_TYPE_ind   *pointObjectInd;
+  EXEC SQL END DECLARE SECTION;
+  
+  long i;
+  
+  /* Copy parameters into the SQL declaration section so they can be used in SQL statements */
+  gType = PgType;
+  srId =  PsrId;
+  x =     Px;
+  y =     Py;
+  z =     Pz;
+  geometryObject = *PgeometryObject;
+  geometryObjectInd = *PgeometryObjectInd;
+
+  if (DEBUG)
+    printf ("Constructing point: GTYPE:%d SRID:%d POINT: %g,%g,%g\n", gType, srId, x, y, z); 
+  
+  /* Allocate an SDO_GEOMETRY object */
+  if (geometryObject == 0) {
+    printf ("Allocate a geometry object in the object cache\n");
+    EXEC SQL ALLOCATE :geometryObject :geometryObjectInd;
+  }
+
+  /* set X, Y and Z attributes in SDO_POINT object */
+  pointObject = &(geometryObject->SDO_POINT);
+  EXEC SQL OBJECT SET X, Y, Z OF :pointObject TO :x, :y, :z;
+
+  /* Set indicators
+     SDO_ELEM_INFO and SDO_ORDINATES to NULL */
+  pointObjectInd = &(geometryObjectInd->SDO_POINT);
+  geometryObjectInd->_atomic	   = 0;
+  geometryObjectInd->SDO_GTYPE     = 0;
+  geometryObjectInd->SDO_SRID      = 0 ;
+  geometryObjectInd->SDO_ELEM_INFO = -1;
+  geometryObjectInd->SDO_ORDINATES = -1;
+  pointObjectInd->_atomic	   = 0;
+  pointObjectInd->X		   = 0;
+  pointObjectInd->Y		   = 0;
+  pointObjectInd->Z		   = 0;
+ 
+  /* set SDO_GTYPE and SDO_SRID attributes in  SDO_GEOMETRY object */
+  EXEC SQL OBJECT SET SDO_GTYPE, SDO_SRID OF :geometryObject :geometryObjectInd TO :gType, :srId;
+
+  /* Return object and its indicators to the caller */   
+  *PgeometryObject = geometryObject;
+  *PgeometryObjectInd = geometryObjectInd;
+}
+
+void *Make2DPolygon(
+       SDO_GEOMETRY **PgeometryObject,
+       SDO_GEOMETRY_ind **PgeometryObjectInd,
+       long    nPoints,
+       Point   *pointArray
+       )  
+{
+  long                 elemInfoArray[3];
+  long                 nOrdinates;
+  double               *ordinateArray;
+  long i, j, k, n;
+  
+  /* Fill elem_info array */
+  elemInfoArray[0] = 1 ;
+  elemInfoArray[1] = 1003 ;
+  elemInfoArray[2] = 1 ;
+
+  /* Allocate space for ordinate array */
+  ordinateArray = (double *) calloc (nPoints*2, (size_t)sizeof(double));
+  /* Fill ordinate array */
+  i = 0;
+  for (j=0; j<nPoints; j++) {
+    ordinateArray[i++] = pointArray[j].x;
+    ordinateArray[i++] = pointArray[j].y;
+  }
+  nOrdinates = i;
+  
+  /* Construct SDO_GEOMETRY object */
+  MakeGeometry (PgeometryObject, PgeometryObjectInd,
+    2003, 8307, 3, elemInfoArray, nOrdinates, ordinateArray );
+
+  /* release memory for ordinate array */
+  free(ordinateArray);
+
+}
+
+
+int main(int argc, char *argv[]) { 
+  Point *points;
+  int   nGeoms;
+  long  nPoints;
+  long  i, j;
+  double x, y, z;
+  EXEC SQL BEGIN DECLARE SECTION;
+  char  *connectionString;
+  long  id;
+  SDO_GEOMETRY *geometry = 0;
+  SDO_GEOMETRY_ind *geometryInd = 0;
+  EXEC SQL END DECLARE SECTION;
+  if (argc <= 2) {
+    printf ("Usage: %s <connectionString> <id> [<nGeoms>] [<nPoints>]\n", argv[0]);
+    exit(1);
+  }
+  /* Get arguments */
+  i = 1;
+  connectionString = argv[i++];
+  id = atoi (argv[i++]);
+  if (argc > 3)
+    nGeoms = atoi (argv[i++]);
+  else
+    nGeoms = 1;
+  if (argc > 4)
+    nPoints = atoi (argv[i++]);
+  else
+    nPoints = 0;
+  /* initialize randomizer */
+  srand(time(0));
+  /* Connect to database */
+  printf ("Connecting to database: %s\n", connectionString);
+  EXEC SQL CONNECT :connectionString ; 
+  for (i=0; i<nGeoms; i++) {
+    if (nPoints > 0) {
+      printf ("Generating %d points polygon\n", nPoints);
+      points = (Point *) calloc (nPoints, (size_t)sizeof(Point));
+      for (j=0; j<nPoints; j++) {
+        points[j].x = rand();
+        points[j].y = rand();
+      }
+      Make2DPolygon (&geometry, &geometryInd, nPoints, points);
+      free (points);
+    }
+    else {
+      printf ("Generating point\n");
+      x = rand();
+      y = rand();
+      z = rand();
+      MakePoint (&geometry, &geometryInd, 3001, 8307, x, y, z);
+    }
+    printf ("Writing geometry %d to database\n",id);
+
+    EXEC SQL INSERT INTO TEST (ID, GEOM) VALUES (:id, :geometry :geometryInd);
+    id++;
+  }
+  EXEC SQL COMMIT;
+  printf ("Done\n");
+}

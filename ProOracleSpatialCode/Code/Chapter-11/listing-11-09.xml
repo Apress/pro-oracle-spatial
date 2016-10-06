@@ -1,0 +1,12 @@
+<!-- Listing 11-9 Setting Global Map Options -->
+<global_map_config>
+  <title text="MapViewer Demo" font="Courier" position="NORTH"/>
+  <note text="Oracle (C) copyright 2004"
+    font="Bookman Old Style Bold Italic"
+    position="SOUTH_EAST"/>
+  <logo image_path="../../../web/myicons/orcl_logo_test.gif"
+    position="SOUTH_WEST"/>
+  <rendering
+    allow_local_adjustment="false"
+    use_globular_projection="false" />
+</global_map_config>

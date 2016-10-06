@@ -1,0 +1,432 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Essential Guide To Oracle Spatial - Code Examples</title>
+
+<body>
+<h1>Essential Guide To Oracle Spatial - Code Examples</h1>
+Goto chapter:
+<a href="#chapter-01">1</a>
+<a href="#chapter-02">2</a>
+<a href="#chapter-03">3</a>
+<a href="#chapter-04">4</a>
+<a href="#chapter-05">5</a>
+<a href="#chapter-06">6</a>
+<a href="#chapter-07">7</a>
+<a href="#chapter-08">8</a>
+<a href="#chapter-09">9</a>
+<a href="#chapter-10">10</a>
+<a href="#chapter-11">11</a>
+<a href="#chapter-12">12</a>
+<a href="#chapter-13">13</a>
+<a href="#chapter-14">14</a>
+<a href="#appendix-a">A</a>
+<a href="#appendix-b">B</a>
+<a href="#appendix-c">C</a>
+<a href="#appendix-d">D</a>
+
+<a name="chapter-01"><h2>Chapter 1 - Introduction to Spatial Processing</h2>
+
+<a name="chapter-02"><h2>Chapter 2 - Location-enabling your application</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>2-1</td><td>Creating the us_restaurants_new Table</td><td><a href="code/Chapter-02/listing-02-01.sql">listing-02-01.sql</a></td></tr>
+<tr><td>2-2</td><td>Inserting a Value for the SDO_GEOMETRY Column in an Oracle Table</td><td><a href="code/Chapter-02/listing-02-02.sql">listing-02-02.sql</a></td></tr>
+<tr><td>2-3</td><td>Converting Address Data (Implicit Spatial Information) to the SDO_GEOMETRY (Explicit Spatial Information) Object</td><td><a href="code/Chapter-02/listing-02-03.sql">listing-02-03.sql</a></td></tr>
+<tr><td>2-4</td><td>Finding the Five Nearest Restaurants on I-795</td><td><a href="code/Chapter-02/listing-02-04.sql">listing-02-04.sql</a></td></tr>
+<tr><td>2-5</td><td>Creating an Index on Locations (SDO_GEOMETRY Column) of Restaurants</td><td><a href="code/Chapter-02/listing-02-05.sql">listing-02-05.sql</a></td></tr>
+<tr><td>2-6</td><td>Finding the Five Nearest Restaurants on Interstate I-795 Using the Spatial Index</td><td><a href="code/Chapter-02/listing-02-06.sql">listing-02-06.sql</a></td></tr>
+<tr><td>2-7</td><td>Identifying All Restaurants in a 50 km Radius Around Interstate I-795</td><td><a href="code/Chapter-02/listing-02-07.sql">listing-02-07.sql</a></td></tr>
+<tr><td>2-8</td><td>Verifying That a Spatial Install Is Successful</td><td><a href="code/Chapter-02/listing-02-08.sql">listing-02-08.sql</a></td></tr>
+</table>
+
+<a name="chapter-03"><h2>Chapter 3 - The SDO_GEOMETRY Data Type</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>3-1</td><td>Creating the customers Table</td><td><a href="code/Chapter-03/listing-03-01.sql">listing-03-01.sql</a></td></tr>
+<tr><td>3-2</td><td>Populating customers table.</td><td><a href="code/Chapter-03/listing-03-02.sql">listing-03-02.sql</a></td></tr>
+<tr><td>3-3</td><td>Adding a location Column to the customers Table</td><td><a href="code/Chapter-03/listing-03-03.sql">listing-03-03.sql</a></td></tr>
+<tr><td>3-4</td><td>Sample Address for a Specific Customer in the customers Table</td><td><a href="code/Chapter-03/listing-03-04.sql">listing-03-04.sql</a></td></tr>
+<tr><td>3-5</td><td>Geocoding Addresses to Obtain Explicit Spatial Information</td><td><a href="code/Chapter-03/listing-03-05.sql">listing-03-05.sql</a></td></tr>
+<tr><td>3-6</td><td>Geocoded location Column in the customers Table</td><td><a href="code/Chapter-03/listing-03-06.sql">listing-03-06.sql</a></td></tr>
+<tr><td>3-7</td><td>Updating a location Column Using an SDO_GEOMETRY Constructor</td><td><a href="code/Chapter-03/listing-03-07.sql">listing-03-07.sql</a></td></tr>
+<tr><td>3-8</td><td>Creating the us_states Table</td><td><a href="code/Chapter-03/listing-03-08.sql">listing-03-08.sql</a></td></tr>
+<tr><td>3-9</td><td>Creating the us_counties Table</td><td><a href="code/Chapter-03/listing-03-09.sql">listing-03-09.sql</a></td></tr>
+<tr><td>3-10</td><td>Creating the us_interstates Table</td><td><a href="code/Chapter-03/listing-03-10.sql">listing-03-10.sql</a></td></tr>
+<tr><td>3-11</td><td>The USER_SDO_GEOM_METADATA View</td><td><a href="code/Chapter-03/listing-03-11.sql">listing-03-11.sql</a></td></tr>
+<tr><td>3-12</td><td>Selecting srids of Geodetic Coordinate Systems.</td><td><a href="code/Chapter-03/listing-03-12.sql">listing-03-12.sql</a></td></tr>
+<tr><td>3-13</td><td>Selecting srids of Projected Coordinate Systems.</td><td><a href="code/Chapter-03/listing-03-13.sql">listing-03-13.sql</a></td></tr>
+<tr><td>3-14</td><td>The SDO_DIM_ARRAY Structure</td><td><a href="code/Chapter-03/listing-03-14.sql">listing-03-14.sql</a></td></tr>
+<tr><td>3-15</td><td>Inserting Metadata for the Spatial Layer Corresponding to the location Column of the customers Table</td><td><a href="code/Chapter-03/listing-03-15.sql">listing-03-15.sql</a></td></tr>
+</table>
+
+<a name="chapter-04"><h2>Chapter 4 - Location-enabling your application</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>4-1</td><td>Creating a table to store all geometry examples</td><td><a href="code/Chapter-04/listing-04-01.sql">listing-04-01.sql</a></td></tr>
+<tr><td>4-2</td><td>SDO_GEOMETRY Data type in Oracle</td><td><a href="code/Chapter-04/listing-04-02.sql">listing-04-02.sql</a></td></tr>
+<tr><td>4-3</td><td>Example of SDO_GTYPE in the location column of customers table.</td><td><a href="code/Chapter-04/listing-04-03.sql">listing-04-03.sql</a></td></tr>
+<tr><td>4-4</td><td>Example of SDO_GTYPE in the geom Column of us_interstates table</td><td><a href="code/Chapter-04/listing-04-04.sql">listing-04-04.sql</a></td></tr>
+<tr><td>4-5</td><td>Example of SDO_GTYPE in the location column of  us_states table.</td><td><a href="code/Chapter-04/listing-04-05.sql">listing-04-05.sql</a></td></tr>
+<tr><td>4-6</td><td>Example of SDO_GTYPE in the location column of  us_states table.</td><td><a href="code/Chapter-04/listing-04-06.sql">listing-04-06.sql</a></td></tr>
+<tr><td>4-7</td><td>The MDSYS.CS_SRS Table</td><td><a href="code/Chapter-04/listing-04-07.sql">listing-04-07.sql</a></td></tr>
+<tr><td>4-8</td><td>Selecting an SRID for the Southern Texas Region from the MDSYS.CS_SRS Table</td><td><a href="code/Chapter-04/listing-04-08.sql">listing-04-08.sql</a></td></tr>
+<tr><td>4-9</td><td>SDO_POINT_TYPE Data Type</td><td><a href="code/Chapter-04/listing-04-09.sql">listing-04-09.sql</a></td></tr>
+<tr><td>4-10</td><td>Point Data in geometry_examples</td><td><a href="code/Chapter-04/listing-04-10.sql">listing-04-10.sql</a></td></tr>
+<tr><td>4-11</td><td>Constructing a Point Geometry Using Well-Known Text (SQL/MM)</td><td><a href="code/Chapter-04/listing-04-11.sql">listing-04-11.sql</a></td></tr>
+<tr><td>4-12</td><td>Storing the Point Coordinates in the SDO_ORDINATES Array Instead of SDO_POINT</td><td><a href="code/Chapter-04/listing-04-12.sql">listing-04-12.sql</a></td></tr>
+<tr><td>4-13</td><td>Four-Dimensional Point Example</td><td><a href="code/Chapter-04/listing-04-13.sql">listing-04-13.sql</a></td></tr>
+<tr><td>4-14</td><td>Two-Dimensional Line String Example</td><td><a href="code/Chapter-04/listing-04-14.sql">listing-04-14.sql</a></td></tr>
+<tr><td>4-15</td><td>Two-Dimensional Line String Connected by Arcs</td><td><a href="code/Chapter-04/listing-04-15.sql">listing-04-15.sql</a></td></tr>
+<tr><td>4-16</td><td>Example of a Simple Polygon Connected by Lines</td><td><a href="code/Chapter-04/listing-04-16.sql">listing-04-16.sql</a></td></tr>
+<tr><td>4-17</td><td>Rectangular Polygon Example</td><td><a href="code/Chapter-04/listing-04-17.sql">listing-04-17.sql</a></td></tr>
+<tr><td>4-18</td><td>Circular Polygon Example</td><td><a href="code/Chapter-04/listing-04-18.sql">listing-04-18.sql</a></td></tr>
+</table>
+
+<a name="chapter-05"><h2>Chapter 5 - Loading and Validating Spatial Data</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>5-1</td><td>Creating the sales_regions Table</td><td><a href="code/Chapter-05/listing-05-01.sql">listing-05-01.sql</a></td></tr>
+<tr><td>5-2</td><td>Inserting a Polygon Geometry into the sales_regions Table</td><td><a href="code/Chapter-05/listing-05-02.sql">listing-05-02.sql</a></td></tr>
+<tr><td>5-3</td><td>Control File for Loading "Point" sales_regions Data</td><td><a href="code/Chapter-05/listing-05-03.ctl">listing-05-03.ctl</a></td></tr>
+<tr><td>5-4</td><td>Using SQL*Loader to Load Data into the sales_regions Table</td><td><a href="code/Chapter-05/listing-05-04.bat">listing-05-04.bat</a></td></tr>
+<tr><td>5-5</td><td>Using SQL*Loader with a Data File</td><td><a href="code/Chapter-05/listing-05-05.bat">listing-05-05.bat</a></td></tr>
+<tr><td>5-6</td><td>sales_regions.ctl File</td><td><a href="code/Chapter-05/listing-05-06.ctl">listing-05-06.ctl</a></td></tr>
+<tr><td>5-8</td><td>Control File for Loading Nonpoint SDO_GEOMETRY Data</td><td><a href="code/Chapter-05/listing-05-08.ctl">listing-05-08.ctl</a></td></tr>
+<tr><td>5-9</td><td>Exporting the customers Table into the customers.dmp File</td><td><a href="code/Chapter-05/listing-05-09.bat">listing-05-09.bat</a></td></tr>
+<tr><td>5-10</td><td>Importing the customers Table into the scott Schema</td><td><a href="code/Chapter-05/listing-05-10.bat">listing-05-10.bat</a></td></tr>
+<tr><td>5-11</td><td>Importing Using the fromuser and touser Arguments</td><td><a href="code/Chapter-05/listing-05-11.bat">listing-05-11.bat</a></td></tr>
+<tr><td>5-12</td><td>Transporting the Tablespace TBS from a Source Database</td><td><a href="code/Chapter-05/listing-05-12.bat">listing-05-12.bat</a></td></tr>
+<tr><td>5-13</td><td>Creating the Transported Tablespace in the Target Database</td><td><a href="code/Chapter-05/listing-05-13.bat">listing-05-13.bat</a></td></tr>
+<tr><td>5-14</td><td>Enabling Spatial Indexes for the Tables in the Transported Tablespace</td><td><a href="code/Chapter-05/listing-05-14.bat">listing-05-14.bat</a></td></tr>
+<tr><td>5-15</td><td>Rebuilding a Spatial Index After Transporting Across Endian Platforms</td><td><a href="code/Chapter-05/listing-05-15.sql">listing-05-15.sql</a></td></tr>
+<tr><td>5-16</td><td>Migrating location Column Data in the customers Table to the Current Format (10g)</td><td><a href="code/Chapter-05/listing-05-16.sql">listing-05-16.sql</a></td></tr>
+<tr><td>5-17</td><td>Using shp2sdo to Convert from ESRI Shapefiles</td><td><a href="code/Chapter-05/listing-05-17.bat">listing-05-17.bat</a></td></tr>
+<tr><td>5-18</td><td>customers.sql File</td><td><a href="code/Chapter-05/listing-05-18.sql">listing-05-18.sql</a></td></tr>
+<tr><td>5-19</td><td>Executing the Output Files from SHP2SDO to Load Data into Oracle</td><td><a href="code/Chapter-05/listing-05-19.bat">listing-05-19.bat</a></td></tr>
+<tr><td>5-20</td><td>Converting from an SDO_GEOMETRY to WKT Format</td><td><a href="code/Chapter-05/listing-05-20.sql">listing-05-20.sql</a></td></tr>
+<tr><td>5-21</td><td>Publishing an SDO_GEOMETRY to a GML Document</td><td><a href="code/Chapter-05/listing-05-21.sql">listing-05-21.sql</a></td></tr>
+<tr><td>5-22</td><td>Publishing Multiple Geometries to a GML Document Fragment</td><td><a href="code/Chapter-05/listing-05-22.sql">listing-05-22.sql</a></td></tr>
+<tr><td>5-24</td><td>Validation Check on a Geometry from the sales_regions Table</td><td><a href="code/Chapter-05/listing-05-24.sql">listing-05-24.sql</a></td></tr>
+<tr><td>5-25</td><td>Validation on a Self-Crossing Geometry</td><td><a href="code/Chapter-05/listing-05-25.sql">listing-05-25.sql</a></td></tr>
+<tr><td>5-26</td><td>Using the diminfo Parameter in the VALIDATE_GEOMETRY_WITH_CONTEXT Function</td><td><a href="code/Chapter-05/listing-05-26.sql">listing-05-26.sql</a></td></tr>
+<tr><td>5-28</td><td>Using the VALIDATE_LAYER_WITH_CONTEXT Procedure</td><td><a href="code/Chapter-05/listing-05-28.sql">listing-05-28.sql</a></td></tr>
+<tr><td>5-29</td><td>Example of Removing Duplicate Vertices in a Geometry</td><td><a href="code/Chapter-05/listing-05-29.sql">listing-05-29.sql</a></td></tr>
+<tr><td>5-30</td><td>Validating After Removing the Duplicate Vertices</td><td><a href="code/Chapter-05/listing-05-30.sql">listing-05-30.sql</a></td></tr>
+<tr><td>5-31</td><td>Extracting the Second Element from a Geometry</td><td><a href="code/Chapter-05/listing-05-31.sql">listing-05-31.sql</a></td></tr>
+<tr><td>5-32</td><td>Validation of an Extracted Geometry</td><td><a href="code/Chapter-05/listing-05-32.sql">listing-05-32.sql</a></td></tr>
+<tr><td>5-33</td><td>Validation on the Result of SDO_UTIL.EXTRACT</td><td><a href="code/Chapter-05/listing-05-33.sql">listing-05-33.sql</a></td></tr>
+<tr><td>5-34</td><td>Removing Duplicate Vertices</td><td><a href="code/Chapter-05/listing-05-34.sql">listing-05-34.sql</a></td></tr>
+<tr><td>5-35</td><td>Example of SDO_UTIL.APPEND</td><td><a href="code/Chapter-05/listing-05-35.sql">listing-05-35.sql</a></td></tr>
+<tr><td>5-36</td><td>Finding the Number of Elements in a Geometry</td><td><a href="code/Chapter-05/listing-05-36.sql">listing-05-36.sql</a></td></tr>
+</table>
+
+<a name="chapter-06"><h2>Chapter 6 - Geocoding</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>6-1</td><td>Geocoding an Address</td><td><a href="code/Chapter-06/listing-06-01.sql">listing-06-01.sql</a></td></tr>
+<tr><td>6-2</td><td>Geocoding and Normalizing an Address</td><td><a href="code/Chapter-06/listing-06-02.sql">listing-06-02.sql</a></td></tr>
+<tr><td>6-3</td><td>Using the GEOCODE_AS_GEOMETRY Function</td><td><a href="code/Chapter-06/listing-06-03.sql">listing-06-03.sql</a></td></tr>
+<tr><td>6-4</td><td>Using the GEOCODE_AS_GEOMETRY Function with an Invalid House Number</td><td><a href="code/Chapter-06/listing-06-04.sql">listing-06-04.sql</a></td></tr>
+<tr><td>6-5</td><td>Using the GEOCODE_AS_GEOMETRY Function with an Invalid Street Name</td><td><a href="code/Chapter-06/listing-06-05.sql">listing-06-05.sql</a></td></tr>
+<tr><td>6-6</td><td>Example of Calling the GEOCODE Function</td><td><a href="code/Chapter-06/listing-06-06.sql">listing-06-06.sql</a></td></tr>
+<tr><td>6-7</td><td>FORMAT_GEO_ADDR Procedure</td><td><a href="code/Chapter-06/listing-06-07.sql">listing-06-07.sql</a></td></tr>
+<tr><td>6-8</td><td>Example of Using the FORMAT_GEO_ADDR Procedure</td><td><a href="code/Chapter-06/listing-06-08.sql">listing-06-08.sql</a></td></tr>
+<tr><td>6-9</td><td>Getting Street Details from the Geocode Reference Data</td><td><a href="code/Chapter-06/listing-06-09.sql">listing-06-09.sql</a></td></tr>
+<tr><td>6-10</td><td>Using the GEOCODE Function with aValid House Number</td><td><a href="code/Chapter-06/listing-06-10.sql">listing-06-10.sql</a></td></tr>
+<tr><td>6-11</td><td>Using the GEOCODE Function with an Invalid House Number</td><td><a href="code/Chapter-06/listing-06-11.sql">listing-06-11.sql</a></td></tr>
+<tr><td>6-12</td><td>Using the GEOCODE Function with an Invalid Postal Code</td><td><a href="code/Chapter-06/listing-06-12.sql">listing-06-12.sql</a></td></tr>
+<tr><td>6-13</td><td>Using the GEOCODE Function with an Invalid Postal Code (in EXACTMode)</td><td><a href="code/Chapter-06/listing-06-13.sql">listing-06-13.sql</a></td></tr>
+<tr><td>6-14</td><td>Using the GEOCODE Function to Find a POI</td><td><a href="code/Chapter-06/listing-06-14.sql">listing-06-14.sql</a></td></tr>
+<tr><td>6-15</td><td>FORMAT_ADDR_ARRAY Procedure</td><td><a href="code/Chapter-06/listing-06-15.sql">listing-06-15.sql</a></td></tr>
+<tr><td>6-16</td><td>Using GEOCODE_ALL over an Ambiguous Address</td><td><a href="code/Chapter-06/listing-06-16.sql">listing-06-16.sql</a></td></tr>
+<tr><td>6-17</td><td>Using GEOCODE_ALL over an Ambiguous Address</td><td><a href="code/Chapter-06/listing-06-17.sql">listing-06-17.sql</a></td></tr>
+<tr><td>6-18</td><td>Adding a Spatial Column</td><td><a href="code/Chapter-06/listing-06-18.sql">listing-06-18.sql</a></td></tr>
+<tr><td>6-19</td><td>Populating the location Column of the branches Table</td><td><a href="code/Chapter-06/listing-06-19.sql">listing-06-19.sql</a></td></tr>
+<tr><td>6-20</td><td>Populating the location Column of the branches Table for German Addresses</td><td><a href="code/Chapter-06/listing-06-20.sql">listing-06-20.sql</a></td></tr>
+<tr><td>6-21</td><td>Address Geocoding and Correction</td><td><a href="code/Chapter-06/listing-06-21.sql">listing-06-21.sql</a></td></tr>
+<tr><td>6-22</td><td>Automatic Geocoding of the branches Table Using a Simple Trigger</td><td><a href="code/Chapter-06/listing-06-22.sql">listing-06-22.sql</a></td></tr>
+<tr><td>6-23</td><td>Automatic Geocoding with Address Correction</td><td><a href="code/Chapter-06/listing-06-23.sql">listing-06-23.sql</a></td></tr>
+</table>
+
+<a name="chapter-07"><h2>Chapter 7 - Using the SDO_GEOMETRY type in applications</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>7-1</td><td>Extracting Coordinates</td><td><a href="code/Chapter-07/listing-07-01.sql">listing-07-01.sql</a></td></tr>
+<tr><td>7-2</td><td>Simple Spatial Query</td><td><a href="code/Chapter-07/listing-07-02.sql">listing-07-02.sql</a></td></tr>
+<tr><td>7-3</td><td>Sample Application in PL/SQL</td><td><a href="code/Chapter-07/listing-07-03.sql">listing-07-03.sql</a></td></tr>
+<tr><td>7-4</td><td>Manipulating VARRAYs</td><td><a href="code/Chapter-07/listing-07-04.sql">listing-07-04.sql</a></td></tr>
+<tr><td>7-5</td><td>Point Constructor Function</td><td><a href="code/Chapter-07/listing-07-05.sql">listing-07-05.sql</a></td></tr>
+<tr><td>7-6</td><td>Rectangle Constructor</td><td><a href="code/Chapter-07/listing-07-06.sql">listing-07-06.sql</a></td></tr>
+<tr><td>7-7</td><td>Line Constructor</td><td><a href="code/Chapter-07/listing-07-07.sql">listing-07-07.sql</a></td></tr>
+<tr><td>7-8</td><td>Counting the Number of Points in a Geometry</td><td><a href="code/Chapter-07/listing-07-08.sql">listing-07-08.sql</a></td></tr>
+<tr><td>7-9</td><td>Function to Extract a Point from a Geometry</td><td><a href="code/Chapter-07/listing-07-09.sql">listing-07-09.sql</a></td></tr>
+<tr><td>7-10</td><td>Getting the First,Middle, and Last Points of a Line String</td><td><a href="code/Chapter-07/listing-07-10.sql">listing-07-10.sql</a></td></tr>
+<tr><td>7-11</td><td>remove_point Function</td><td><a href="code/Chapter-07/listing-07-11.sql">listing-07-11.sql</a></td></tr>
+<tr><td>7-12</td><td>Adding a Point in a Line String (add_to_line in Listing 7-3)</td><td><a href="code/Chapter-07/listing-07-12.sql">listing-07-12.sql</a></td></tr>
+<tr><td>7-14</td><td>Invoking SdoPrint</td><td><a href="code/Chapter-07/listing-07-14.bat">listing-07-14.bat</a></td></tr>
+<tr><td>N/A</td><td>Using the Java API for reading geometries</td><td><a href="code/Chapter-07/SdoPrint.java">SdoPrint.java</a></td></tr>
+<tr><td>N/A</td><td>Using the Java API for creating and updating geometries</td><td><a href="code/Chapter-07/SdoLoad.java">SdoLoad.java</a></td></tr>
+<tr><td>N/A</td><td>This program illustrates the basic operation of an OCI program. It does not use any spatial concepts; it just fetches regular column data from the US_CITIES table.</td><td><a href="code/Chapter-07/oci_sample.c">oci_sample.c</a></td></tr>
+<tr><td>N/A</td><td>Same, illustrating the use of array fetches (the size of the array is passed as the last command-line argument).</td><td><a href="code/Chapter-07/oci_sample_array.c">oci_sample_array.c</a></td></tr>
+<tr><td>N/A</td><td>Illustrates the fetching of spatial information (points) without using object types (i.e., by extracting the x and y values of each point).</td><td><a href="code/Chapter-07/read_points.c">read_points.c</a></td></tr>
+<tr><td>N/A</td><td>Same, using array fetches</td><td><a href="code/Chapter-07/read_points_array.c">read_points_array.c</a></td></tr>
+<tr><td>N/A</td><td>Complete example of how to read and decode geometry objects.</td><td><a href="code/Chapter-07/read_geom.c">read_geom.c</a></td></tr>
+<tr><td>N/A</td><td>Same, using array fetches</td><td><a href="code/Chapter-07/read_geom_array.c">read_geom_array.c</a></td></tr>
+<tr><td>N/A</td><td>Select spatial objects using a spatial query.</td><td><a href="code/Chapter-07/select_pois.c">select_pois.c</a></td></tr>
+<tr><td>N/A</td><td>Loads geometry objects into a table in the database. The geometries are read from a text file.</td><td><a href="code/Chapter-07/load_geom.c">load_geom.c</a></td></tr>
+<tr><td>N/A</td><td>Read geometries in Pro*C</td><td><a href="code/Chapter-07/preadgeom.pc">preadgeom.pc</a></td></tr>
+<tr><td>N/A</td><td>Write geometries in Pro*C</td><td><a href="code/Chapter-07/pwritegeom.pc">pwritegeom.pc</a></td></tr>
+</table>
+
+<a name="chapter-08"><h2>Chapter 8 - Spatial Indexes and Operators</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>8-1</td><td>SDO_WITHIN_DISTANCE Spatial Operator in SQL</td><td><a href="code/Chapter-08/listing-08-01.sql">listing-08-01.sql</a></td></tr>
+<tr><td>8-2</td><td>Creating an Index</td><td><a href="code/Chapter-08/listing-08-02.sql">listing-08-02.sql</a></td></tr>
+<tr><td>8-3</td><td>USER_SDO_GEOM_METADATA View</td><td><a href="code/Chapter-08/listing-08-03.sql">listing-08-03.sql</a></td></tr>
+<tr><td>8-4</td><td>Inserting Metadata for the Spatial Layer Corresponding to the location Column of the customers Table</td><td><a href="code/Chapter-08/listing-08-04.sql">listing-08-04.sql</a></td></tr>
+<tr><td>8-5</td><td>Dropping a Spatial Index</td><td><a href="code/Chapter-08/listing-08-05.sql">listing-08-05.sql</a></td></tr>
+<tr><td>8-6</td><td>Creating a Spatial Index on the location Column of the customers Table</td><td><a href="code/Chapter-08/listing-08-06.sql">listing-08-06.sql</a></td></tr>
+<tr><td>8-7</td><td>Identifying the SDO_INDEX_TABLE That Stores the Spatial Index on the customers Table</td><td><a href="code/Chapter-08/listing-08-07.sql">listing-08-07.sql</a></td></tr>
+<tr><td>8-9</td><td>Creating a Spatial Index in Tablespace TBS_3</td><td><a href="code/Chapter-08/listing-08-09.sql">listing-08-09.sql</a></td></tr>
+<tr><td>8-10</td><td>Creating an Index with the INITIAL and NEXT Extents for an Index Table</td><td><a href="code/Chapter-08/listing-08-10.sql">listing-08-10.sql</a></td></tr>
+<tr><td>8-11</td><td>Creating an Index with WORK_TABLESPACE As TBS_3</td><td><a href="code/Chapter-08/listing-08-11.sql">listing-08-11.sql</a></td></tr>
+<tr><td>8-12</td><td>Creating an Index for Specific-Type (Point) Geometries</td><td><a href="code/Chapter-08/listing-08-12.sql">listing-08-12.sql</a></td></tr>
+<tr><td>8-13</td><td>Creating an R-tree Index with Dimensionality Specified</td><td><a href="code/Chapter-08/listing-08-13.sql">listing-08-13.sql</a></td></tr>
+<tr><td>8-14</td><td>Creating an Index with the SDO_DML_BATCH_SIZE Parameter</td><td><a href="code/Chapter-08/listing-08-14.sql">listing-08-14.sql</a></td></tr>
+<tr><td>8-15</td><td>Creating a Quadtree Type of Spatial Index</td><td><a href="code/Chapter-08/listing-08-15.sql">listing-08-15.sql</a></td></tr>
+<tr><td>8-16</td><td>Examining the USER_SDO_INDEX_METADATAView for Index Parameters</td><td><a href="code/Chapter-08/listing-08-16.sql">listing-08-16.sql</a></td></tr>
+<tr><td>8-17</td><td>Estimating the Size of a Spatial Index on the location Column of the customers Table</td><td><a href="code/Chapter-08/listing-08-17.sql">listing-08-17.sql</a></td></tr>
+<tr><td>8-19</td><td>Spatial Operator Usage in a SQL Statement</td><td><a href="code/Chapter-08/listing-08-19.sql">listing-08-19.sql</a></td></tr>
+<tr><td>8-20</td><td>SDO_WITHIN_DISTANCE Operator Retrieving All Customers Within a Quarter-Mile Radius of a Competitor Store</td><td><a href="code/Chapter-08/listing-08-20.sql">listing-08-20.sql</a></td></tr>
+<tr><td>8-21</td><td>SDO_WITHIN_DISTANCE Operator Retrieving All Customers in a Quarter-Mile Radius of a Competitor Store and Also Reporting Their Distances</td><td><a href="code/Chapter-08/listing-08-21.sql">listing-08-21.sql</a></td></tr>
+<tr><td>8-22</td><td>A Simple Example of the SDO_NN Operator</td><td><a href="code/Chapter-08/listing-08-22.sql">listing-08-22.sql</a></td></tr>
+<tr><td>8-23</td><td>SDO_NN Operator Retrieving the Five Nearest Customers to a Specific Competitor</td><td><a href="code/Chapter-08/listing-08-23.sql">listing-08-23.sql</a></td></tr>
+<tr><td>8-24</td><td>SDO_NN Operator Retrieving the Five GOLD Customers Nearest to a Specific Competitor</td><td><a href="code/Chapter-08/listing-08-24.sql">listing-08-24.sql</a></td></tr>
+<tr><td>8-25</td><td>SDO_NN Operator Retrieving the Five GOLD Customers Nearest to a Competitor</td><td><a href="code/Chapter-08/listing-08-25.sql">listing-08-25.sql</a></td></tr>
+<tr><td>8-26</td><td>SDO_NN Operator Retrieving the Five Customers Nearest to a Specific Competitor</td><td><a href="code/Chapter-08/listing-08-26.sql">listing-08-26.sql</a></td></tr>
+<tr><td>8-27</td><td>SDO_NN Operator Retrieving the Five Customers Nearest to a Specific Competitor Along with Their Distances</td><td><a href="code/Chapter-08/listing-08-27.sql">listing-08-27.sql</a></td></tr>
+<tr><td>8-28</td><td>SDO_NN Operator Retrieving the Five GOLD Customers Nearest to a Specific Competitor Along with Their Distances</td><td><a href="code/Chapter-08/listing-08-28.sql">listing-08-28.sql</a></td></tr>
+<tr><td>8-29</td><td>Rewriting Listing 8-27 with Mile As the Distance Unit</td><td><a href="code/Chapter-08/listing-08-29.sql">listing-08-29.sql</a></td></tr>
+<tr><td>8-30</td><td>Rewriting Listing 8-28 with Mile As the Distance Unit</td><td><a href="code/Chapter-08/listing-08-30.sql">listing-08-30.sql</a></td></tr>
+<tr><td>8-31</td><td>Creating the Sales Region (Area of Influence) for Each Competitor/Branch</td><td><a href="code/Chapter-08/listing-08-31.sql">listing-08-31.sql</a></td></tr>
+<tr><td>8-32</td><td>Creating Indexes on Sales Regions of Competitors/Branches</td><td><a href="code/Chapter-08/listing-08-32.sql">listing-08-32.sql</a></td></tr>
+<tr><td>8-33</td><td>SDO_FILTER Operator Retrieving All Customers Within a Competitor's Service Area</td><td><a href="code/Chapter-08/listing-08-33.sql">listing-08-33.sql</a></td></tr>
+<tr><td>8-34</td><td>Typical Query from MapViewer Using the SDO_FILTER Operator</td><td><a href="code/Chapter-08/listing-08-34.sql">listing-08-34.sql</a></td></tr>
+<tr><td>8-35</td><td>SDO_RELATE Operator Retrieving All Customers in a Quarter-Mile Buffer Zone of a Competitor Store</td><td><a href="code/Chapter-08/listing-08-35.sql">listing-08-35.sql</a></td></tr>
+<tr><td>8-36</td><td>Identifying a DISJOINT relationship</td><td><a href="code/Chapter-08/listing-08-36.sql">listing-08-36.sql</a></td></tr>
+<tr><td>8-37</td><td>SDO_RELATE Operator Identifying All Competitors in the D.C. Region</td><td><a href="code/Chapter-08/listing-08-37.sql">listing-08-37.sql</a></td></tr>
+<tr><td>8-38</td><td>SDO_RELATE Operator Identifying All Competitors Inside the D.C. Region</td><td><a href="code/Chapter-08/listing-08-38.sql">listing-08-38.sql</a></td></tr>
+<tr><td>8-39</td><td>SDO_RELATE Operator Identifying All Competitors That Overlap the D.C. Region</td><td><a href="code/Chapter-08/listing-08-39.sql">listing-08-39.sql</a></td></tr>
+<tr><td>8-40</td><td>Identifying Sales Regions That Intersect a Specific Sales Region (id=51)</td><td><a href="code/Chapter-08/listing-08-40.sql">listing-08-40.sql</a></td></tr>
+<tr><td>8-41</td><td>Identifying All Sales Regions That Overlap a Specific Sales Region (id=51)</td><td><a href="code/Chapter-08/listing-08-41.sql">listing-08-41.sql</a></td></tr>
+<tr><td>8-42</td><td>Verifying That a Sales Region Touches Another Sales Region (id=51)</td><td><a href="code/Chapter-08/listing-08-42.sql">listing-08-42.sql</a></td></tr>
+<tr><td>8-43</td><td>Adding the SDO_LEVEL=6 Parameter to an SDO_RELATE Query</td><td><a href="code/Chapter-08/listing-08-43.sql">listing-08-43.sql</a></td></tr>
+<tr><td>8-44</td><td>Explaining the Execution Plan for a SQL Statement</td><td><a href="code/Chapter-08/listing-08-44.sql">listing-08-44.sql</a></td></tr>
+<tr><td>8-45</td><td>SDO_NN Operator Retrieving the Five GOLD Customers Nearest to a Specific Competitor Along with Their Distances</td><td><a href="code/Chapter-08/listing-08-45.sql">listing-08-45.sql</a></td></tr>
+<tr><td>8-46</td><td>Creating an Index on customer_grade and Rerunning Listing 8-45</td><td><a href="code/Chapter-08/listing-08-46.sql">listing-08-46.sql</a></td></tr>
+<tr><td>8-47</td><td>Usage of Hints with SDO_NN and Other Operators on the Same Table</td><td><a href="code/Chapter-08/listing-08-47.sql">listing-08-47.sql</a></td></tr>
+<tr><td>8-48</td><td>Spatial Operator with Multiple Hints in a SQL Statement with Two Tables</td><td><a href="code/Chapter-08/listing-08-48.sql">listing-08-48.sql</a></td></tr>
+<tr><td>8-49</td><td>Creating a Deterministic Function to Return an SDO_GEOMETRYUsing Address Attributes of the customers Table</td><td><a href="code/Chapter-08/listing-08-49.sql">listing-08-49.sql</a></td></tr>
+<tr><td>8-50</td><td>Declaring the gcdr_geometry Function As DETERMINISTIC</td><td><a href="code/Chapter-08/listing-08-50.sql">listing-08-50.sql</a></td></tr>
+<tr><td>8-51</td><td>Inserting the Metadata for a <table, function-based pseudo-column></td><td><a href="code/Chapter-08/listing-08-51.sql">listing-08-51.sql</a></td></tr>
+<tr><td>8-52</td><td>Creating a Spatial Index on a Function Returning an SDO_GEOMETRY</td><td><a href="code/Chapter-08/listing-08-52.sql">listing-08-52.sql</a></td></tr>
+<tr><td>8-53</td><td>Setting Session Parameters to Enable Query Rewrite on Function-Based Indexes</td><td><a href="code/Chapter-08/listing-08-53.sql">listing-08-53.sql</a></td></tr>
+<tr><td>8-54</td><td>SDO_NN Operator Retrieving the Five Customers Nearest to Each Competitor Using the Function-Based Index</td><td><a href="code/Chapter-08/listing-08-54.sql">listing-08-54.sql</a></td></tr>
+<tr><td>8-55</td><td>Creating a Partitioned Table</td><td><a href="code/Chapter-08/listing-08-55.sql">listing-08-55.sql</a></td></tr>
+<tr><td>8-57</td><td>Creating a Local Partitioned Spatial Index with Partition-Specific Parameters</td><td><a href="code/Chapter-08/listing-08-57.sql">listing-08-57.sql</a></td></tr>
+<tr><td>8-58</td><td>SDO_WITHIN_DISTANCE Operator on a Partitioned Table</td><td><a href="code/Chapter-08/listing-08-58.sql">listing-08-58.sql</a></td></tr>
+<tr><td>8-59</td><td>Obtaining the Five Customers Nearest to Each Competitor When the customers Table Has a Local Partitioned Index</td><td><a href="code/Chapter-08/listing-08-59.sql">listing-08-59.sql</a></td></tr>
+<tr><td>8-61</td><td>Setting the Degree of Parallelism to 2 for a Table</td><td><a href="code/Chapter-08/listing-08-61.sql">listing-08-61.sql</a></td></tr>
+<tr><td>8-62</td><td>SDO_RELATE Operator Retrieving All Customers Inside (and Touching the Border of) Each Competitor Region</td><td><a href="code/Chapter-08/listing-08-62.sql">listing-08-62.sql</a></td></tr>
+<tr><td>8-63</td><td>SDO_JOIN Operator Analyzing the Number of Customers Inside All the Competitor Regions</td><td><a href="code/Chapter-08/listing-08-63.sql">listing-08-63.sql</a></td></tr>
+<tr><td>8-64</td><td>SDO_FILTER Operator Retrieving All Customers Whose MBRs Intersect Those of Competitor Regions</td><td><a href="code/Chapter-08/listing-08-64.sql">listing-08-64.sql</a></td></tr>
+<tr><td>8-65</td><td>SDO_JOIN Operator Retrieving All Customers Whose MBRs Intersect the MBRs of Competitor Regions (Filter Operation Is Used)</td><td><a href="code/Chapter-08/listing-08-65.sql">listing-08-65.sql</a></td></tr>
+</table>
+
+<a name="chapter-09"><h2>Chapter 9 - Spatial Functions</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>9-1</td><td>Creating Buffers Around Branches</td><td><a href="code/Chapter-09/listing-09-01.sql">listing-09-01.sql</a></td></tr>
+<tr><td>9-2</td><td>Creating Buffers Around Competitor Locations</td><td><a href="code/Chapter-09/listing-09-02.sql">listing-09-02.sql</a></td></tr>
+<tr><td>9-3</td><td>Identifying Customers Within a Quarter-Mile of a Competitor Location</td><td><a href="code/Chapter-09/listing-09-03.sql">listing-09-03.sql</a></td></tr>
+<tr><td>9-4</td><td>Using the SDO_DISTANCE Function with the SDO_WITHIN_DISTANCE Spatial Operator in SQL</td><td><a href="code/Chapter-09/listing-09-04.sql">listing-09-04.sql</a></td></tr>
+<tr><td>9-5</td><td>Identifying Customers Inside a Competitor's Sales Region</td><td><a href="code/Chapter-09/listing-09-05.sql">listing-09-05.sql</a></td></tr>
+<tr><td>9-6</td><td>Identifying Customers That Interact with a Competitor's Sales Region</td><td><a href="code/Chapter-09/listing-09-06.sql">listing-09-06.sql</a></td></tr>
+<tr><td>9-7</td><td>Identifying Suppliers in a Quarter-Mile Buffer Around a Competitor</td><td><a href="code/Chapter-09/listing-09-07.sql">listing-09-07.sql</a></td></tr>
+<tr><td>9-8</td><td>Identifying Customers in Quarter-Mile Buffer Around a Competitor</td><td><a href="code/Chapter-09/listing-09-08.sql">listing-09-08.sql</a></td></tr>
+<tr><td>9-9</td><td>RELATE Function Complementing the SDO_RELATE Operator</td><td><a href="code/Chapter-09/listing-09-09.sql">listing-09-09.sql</a></td></tr>
+<tr><td>9-10</td><td>SDO_INTERSECTION of Two Geometries</td><td><a href="code/Chapter-09/listing-09-10.sql">listing-09-10.sql</a></td></tr>
+<tr><td>9-11</td><td>Sales Regions Intersecting the Sales Region with id=51</td><td><a href="code/Chapter-09/listing-09-11.sql">listing-09-11.sql</a></td></tr>
+<tr><td>9-12</td><td>Identifying Customers in sales_ intersection_zones</td><td><a href="code/Chapter-09/listing-09-12.sql">listing-09-12.sql</a></td></tr>
+<tr><td>9-13</td><td>Identifying Customers in the Intersection of Sales Regions 51 and 43</td><td><a href="code/Chapter-09/listing-09-13.sql">listing-09-13.sql</a></td></tr>
+<tr><td>9-14</td><td>SDO_UNION of Two Geometries</td><td><a href="code/Chapter-09/listing-09-14.sql">listing-09-14.sql</a></td></tr>
+<tr><td>9-15</td><td>Coverage of the Sales Regions  Performing a Union of All the Sales Regions</td><td><a href="code/Chapter-09/listing-09-15.sql">listing-09-15.sql</a></td></tr>
+<tr><td>9-16</td><td>SDO_DIFFERENCE of Competitor Region 2 with Sales Region 6</td><td><a href="code/Chapter-09/listing-09-16.sql">listing-09-16.sql</a></td></tr>
+<tr><td>9-17</td><td>Identifying Customers in an Exclusive Zone of a Competitor</td><td><a href="code/Chapter-09/listing-09-17.sql">listing-09-17.sql</a></td></tr>
+<tr><td>9-18</td><td>Combining Listings 9-16 and 9-17</td><td><a href="code/Chapter-09/listing-09-18.sql">listing-09-18.sql</a></td></tr>
+<tr><td>9-19</td><td>SDO_XOR of Sales Regions 43 and 51 to Identify Customers That Are Not Shared Between Them</td><td><a href="code/Chapter-09/listing-09-19.sql">listing-09-19.sql</a></td></tr>
+<tr><td>9-20</td><td>Area of the Intersection Region of Sales Region 43 and Sales Region 51</td><td><a href="code/Chapter-09/listing-09-20.sql">listing-09-20.sql</a></td></tr>
+<tr><td>9-21</td><td>Identifying Interstates Shorter Than 1 Mile</td><td><a href="code/Chapter-09/listing-09-21.sql">listing-09-21.sql</a></td></tr>
+<tr><td>9-22</td><td>Computing the MBR of a Geometry</td><td><a href="code/Chapter-09/listing-09-22.sql">listing-09-22.sql</a></td></tr>
+<tr><td>9-23</td><td>Obtaining the MIN_ORDINATEs and MAX_ORDINATEs in a Specific Dimension</td><td><a href="code/Chapter-09/listing-09-23.sql">listing-09-23.sql</a></td></tr>
+<tr><td>9-24</td><td>Computing the Convex Hull for the State of New Hampshire</td><td><a href="code/Chapter-09/listing-09-24.sql">listing-09-24.sql</a></td></tr>
+<tr><td>9-25</td><td>Computing the Centroid for the State of New Hampshire</td><td><a href="code/Chapter-09/listing-09-25.sql">listing-09-25.sql</a></td></tr>
+<tr><td>9-26</td><td>Obtaining a Point on the Surface of the Geometry of the State of Massachusetts</td><td><a href="code/Chapter-09/listing-09-26.sql">listing-09-26.sql</a></td></tr>
+<tr><td>9-27</td><td>Finding the Extent of a Set of Geometries Using SDO_AGGR_MBR</td><td><a href="code/Chapter-09/listing-09-27.sql">listing-09-27.sql</a></td></tr>
+<tr><td>9-28</td><td>Finding the Coverage of Branches Using SDO_AGGR_UNION</td><td><a href="code/Chapter-09/listing-09-28.sql">listing-09-28.sql</a></td></tr>
+<tr><td>9-29</td><td>Union of Three Sales Regions (ids 43, 51, and 2)</td><td><a href="code/Chapter-09/listing-09-29.sql">listing-09-29.sql</a></td></tr>
+<tr><td>9-30</td><td>Union of All Sales Regions to Obtain Business Coverage</td><td><a href="code/Chapter-09/listing-09-30.sql">listing-09-30.sql</a></td></tr>
+<tr><td>9-31</td><td>Finding the Coverage of sales_regions Using SDO_AGGR_CONVEXHULL</td><td><a href="code/Chapter-09/listing-09-31.sql">listing-09-31.sql</a></td></tr>
+<tr><td>9-32</td><td>Finding the Centroid of Customer Locations Using SDO_AGGR_CENTROID</td><td><a href="code/Chapter-09/listing-09-32.sql">listing-09-32.sql</a></td></tr>
+</table>
+
+<a name="chapter-10"><h2>Chapter 10 - Network Modelling and Tracing</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>10-1</td><td>Creating a Spatial Network Using Default Table Names</td><td><a href="code/Chapter-10/listing-10-01.sql">listing-10-01.sql</a></td></tr>
+<tr><td>10-2</td><td>Structure of Default Network Tables</td><td><a href="code/Chapter-10/listing-10-02.sql">listing-10-02.sql</a></td></tr>
+<tr><td>10-3</td><td>Network Creation with Explicit Table and Column Names</td><td><a href="code/Chapter-10/listing-10-03.sql">listing-10-03.sql</a></td></tr>
+<tr><td>10-4</td><td>Manual Network Creation</td><td><a href="code/Chapter-10/listing-10-04.sql">listing-10-04.sql</a></td></tr>
+<tr><td>10-5</td><td>Setting Up Network Metadata</td><td><a href="code/Chapter-10/listing-10-05.sql">listing-10-05.sql</a></td></tr>
+<tr><td>10-6</td><td>Setting Up Metadata for a Time-Based Road Network</td><td><a href="code/Chapter-10/listing-10-06.sql">listing-10-06.sql</a></td></tr>
+<tr><td>10-7</td><td>Existing Water Network Tables</td><td><a href="code/Chapter-10/listing-10-07.sql">listing-10-07.sql</a></td></tr>
+<tr><td>10-8</td><td>Views over Existing Tables</td><td><a href="code/Chapter-10/listing-10-08.sql">listing-10-08.sql</a></td></tr>
+<tr><td>10-9</td><td>Creating the Path and Path Link Tables</td><td><a href="code/Chapter-10/listing-10-09.sql">listing-10-09.sql</a></td></tr>
+<tr><td>10-10</td><td>Metadata for a Network on Existing Structures</td><td><a href="code/Chapter-10/listing-10-10.sql">listing-10-10.sql</a></td></tr>
+<tr><td>10-11</td><td>Validating a Network Definition</td><td><a href="code/Chapter-10/listing-10-11.sql">listing-10-11.sql</a></td></tr>
+<tr><td>10-12</td><td>Dropping a Network</td><td><a href="code/Chapter-10/listing-10-12.sql">listing-10-12.sql</a></td></tr>
+<tr><td>10-13</td><td>Adding Spatial Metadata to Network Tables</td><td><a href="code/Chapter-10/listing-10-13.sql">listing-10-13.sql</a></td></tr>
+<tr><td>10-14</td><td>Convenient Procedure for Getting Network Details</td><td><a href="code/Chapter-10/listing-10-14.sql">listing-10-14.sql</a></td></tr>
+<tr><td>10-15</td><td>Getting Network Details</td><td><a href="code/Chapter-10/listing-10-15.sql">listing-10-15.sql</a></td></tr>
+<tr><td>10-16</td><td>Defining the UNET Network</td><td><a href="code/Chapter-10/listing-10-16.sql">listing-10-16.sql</a></td></tr>
+<tr><td>10-17</td><td>Loading the UNET Network</td><td><a href="code/Chapter-10/listing-10-17.sql">listing-10-17.sql</a></td></tr>
+<tr><td>10-18</td><td>Defining the DNET Network</td><td><a href="code/Chapter-10/listing-10-18.sql">listing-10-18.sql</a></td></tr>
+<tr><td>10-19</td><td>Loading the DNET Network</td><td><a href="code/Chapter-10/listing-10-19.sql">listing-10-19.sql</a></td></tr>
+<tr><td>10-20</td><td>Using the shortestPath()Method</td><td><a href="code/Chapter-10/listing-10-20.java">listing-10-20.java</a></td></tr>
+<tr><td>10-21</td><td>Using the nearestNeighbors()Method</td><td><a href="code/Chapter-10/listing-10-21.java">listing-10-21.java</a></td></tr>
+<tr><td>10-22</td><td>Using the withinCost()Method</td><td><a href="code/Chapter-10/listing-10-22.java">listing-10-22.java</a></td></tr>
+<tr><td>10-23</td><td>Using the tspPath()Method</td><td><a href="code/Chapter-10/listing-10-23.java">listing-10-23.java</a></td></tr>
+<tr><td>10-24</td><td>Using the findReachableNodes()Method</td><td><a href="code/Chapter-10/listing-10-24.java">listing-10-24.java</a></td></tr>
+<tr><td>10-25</td><td>Using the mcst()Method</td><td><a href="code/Chapter-10/listing-10-25.java">listing-10-25.java</a></td></tr>
+<tr><td>10-26</td><td>Using the allPaths()Method</td><td><a href="code/Chapter-10/listing-10-26.java">listing-10-26.java</a></td></tr>
+<tr><td>10-27</td><td>Using the shortestPaths()Method</td><td><a href="code/Chapter-10/listing-10-27.java">listing-10-27.java</a></td></tr>
+<tr><td>10-28</td><td>Using the SystemConstraint Class</td><td><a href="code/Chapter-10/listing-10-28.java">listing-10-28.java</a></td></tr>
+<tr><td>10-29</td><td>Setting Link Levels for the UNET Network</td><td><a href="code/Chapter-10/listing-10-29.sql">listing-10-29.sql</a></td></tr>
+<tr><td>10-30</td><td>Network Constraint</td><td><a href="code/Chapter-10/listing-10-30.java">listing-10-30.java</a></td></tr>
+<tr><td>10-31</td><td>Using the Network Constraint</td><td><a href="code/Chapter-10/listing-10-31.java">listing-10-31.java</a></td></tr>
+<tr><td>10-32</td><td>Creating a Network Using the Java API</td><td><a href="code/Chapter-10/listing-10-32.java">listing-10-32.java</a></td></tr>
+<tr><td>10-33</td><td>Starting the Network Editor</td><td><a href="code/Chapter-10/listing-10-33.bat">listing-10-33.bat</a></td></tr>
+</table>
+
+<a name="chapter-11"><h2>Chapter 11 - Generating Maps</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>11-1</td><td>Branches in San Francisco</td><td><a href="code/Chapter-11/listing-11-01.sql">listing-11-01.sql</a></td></tr>
+<tr><td>11-2</td><td>Loading Maps, Themes, and Style Definitions</td><td><a href="code/Chapter-11/listing-11-02.sql">listing-11-02.sql</a></td></tr>
+<tr><td>11-3</td><td>Define a Data Source</td><td><a href="code/Chapter-11/listing-11-03.xml">listing-11-03.xml</a></td></tr>
+<tr><td>11-4</td><td>Setting the log level</td><td><a href="code/Chapter-11/listing-11-04.xml">listing-11-04.xml</a></td></tr>
+<tr><td>11-5</td><td>Controling map image lifetime</td><td><a href="code/Chapter-11/listing-11-05.xml">listing-11-05.xml</a></td></tr>
+<tr><td>11-6</td><td>Controlling the data cache</td><td><a href="code/Chapter-11/listing-11-06.xml">listing-11-06.xml</a></td></tr>
+<tr><td>11-7</td><td>Defining a permanent data source</td><td><a href="code/Chapter-11/listing-11-07.xml">listing-11-07.xml</a></td></tr>
+<tr><td>11-8</td><td>Defining a permanent OC4J data source</td><td><a href="code/Chapter-11/listing-11-08.xml">listing-11-08.xml</a></td></tr>
+<tr><td>11-9</td><td>Setting Global Map Options</td><td><a href="code/Chapter-11/listing-11-09.xml">listing-11-09.xml</a></td></tr>
+<tr><td>11-10</td><td>Starting the Map definition tool</td><td><a href="code/Chapter-11/listing-11-10.bat">listing-11-10.bat</a></td></tr>
+<tr><td>N/A</td><td>Code Examples and applications</td><td><a href="code/Chapter-11/web-examples.zip">web-examples.zip</a></td></tr>
+</table>
+
+<a name="chapter-12"><h2>Chapter 12 - Putting it together: an example application</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>12-1</td><td>Loading the Geographical Data</td><td><a href="code/Chapter-12/listing-12-01.sql">listing-12-01.sql</a></td></tr>
+<tr><td>12-2</td><td>Loading and Location-Enabling the Business Data</td><td><a href="code/Chapter-12/listing-12-02.sql">listing-12-02.sql</a></td></tr>
+<tr><td>12-3</td><td>Loading Map Definitions</td><td><a href="code/Chapter-12/listing-12-03.sql">listing-12-03.sql</a></td></tr>
+<tr><td>12-4</td><td>Functions to Extract x and y Coordinates</td><td><a href="code/Chapter-12/listing-12-04.sql">listing-12-04.sql</a></td></tr>
+<tr><td>12-5</td><td>Reset Action</td><td><a href="code/Chapter-12/listing-12-05.java">listing-12-05.java</a></td></tr>
+<tr><td>12-6</td><td>Zoom Actions</td><td><a href="code/Chapter-12/listing-12-06.java">listing-12-06.java</a></td></tr>
+<tr><td>12-7</td><td>Pan Actions</td><td><a href="code/Chapter-12/listing-12-07.java">listing-12-07.java</a></td></tr>
+<tr><td>12-8</td><td>reCenter Action</td><td><a href="code/Chapter-12/listing-12-08.java">listing-12-08.java</a></td></tr>
+<tr><td>12-9</td><td>updateMap Action</td><td><a href="code/Chapter-12/listing-12-09.java">listing-12-09.java</a></td></tr>
+<tr><td>12-10</td><td>Find Action</td><td><a href="code/Chapter-12/listing-12-10.java">listing-12-10.java</a></td></tr>
+<tr><td>12-11</td><td>identify Action</td><td><a href="code/Chapter-12/listing-12-11.java">listing-12-11.java</a></td></tr>
+<tr><td>12-12</td><td>setMark Action</td><td><a href="code/Chapter-12/listing-12-12.java">listing-12-12.java</a></td></tr>
+<tr><td>12-13</td><td>distSearch Action</td><td><a href="code/Chapter-12/listing-12-13.java">listing-12-13.java</a></td></tr>
+<tr><td>12-14</td><td>nnSearch Action</td><td><a href="code/Chapter-12/listing-12-14.java">listing-12-14.java</a></td></tr>
+<tr><td>12-15</td><td>Calculating a Route</td><td><a href="code/Chapter-12/listing-12-15.java">listing-12-15.java</a></td></tr>
+<tr><td>12-16</td><td>Example Application</td><td><a href="code/Chapter-12/listing-12-16.jsp">listing-12-16.jsp</a></td></tr>
+</table>
+
+<a name="chapter-13"><h2>Chapter 13 - Case Studies</h2>
+
+<a name="chapter-14"><h2>Chapter 14 - Tips and common mistakes</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>14-1</td><td>Correcting the Orientation of a Polygon Geometry Using TO_CURRENT</td><td><a href="code/Chapter-14/listing-14-01.sql">listing-14-01.sql</a></td></tr>
+<tr><td>14-2</td><td>Correcting a Self-Crossing Polygon Geometry Using SDO_UNION</td><td><a href="code/Chapter-14/listing-14-02.sql">listing-14-02.sql</a></td></tr>
+<tr><td>14-3</td><td>Nearest-Neighbor Query on the customers Table</td><td><a href="code/Chapter-14/listing-14-03.sql">listing-14-03.sql</a></td></tr>
+<tr><td>14-4</td><td>Specifying LAYER_GTYPE During Spatial Index Creation</td><td><a href="code/Chapter-14/listing-14-04.sql">listing-14-04.sql</a></td></tr>
+<tr><td>14-5</td><td>Creating an Empty Table with the Same Structure As the us_streets Table</td><td><a href="code/Chapter-14/listing-14-05.sql">listing-14-05.sql</a></td></tr>
+<tr><td>14-6</td><td>Reinserting into the us_streets Table Based on the linear_key Order</td><td><a href="code/Chapter-14/listing-14-06.sql">listing-14-06.sql</a></td></tr>
+<tr><td>14-7</td><td>Using the linear_key Function to Order Geometry Rows Based on a 'Spatial' Ordering</td><td><a href="code/Chapter-14/listing-14-07.sql">listing-14-07.sql</a></td></tr>
+<tr><td>14-8</td><td>Aggregate Union of All Geometries in the us_counties Table</td><td><a href="code/Chapter-14/listing-14-08.sql">listing-14-08.sql</a></td></tr>
+<tr><td>14-9</td><td>Computing the Aggregate Unions for Multiple Groups</td><td><a href="code/Chapter-14/listing-14-09.sql">listing-14-09.sql</a></td></tr>
+<tr><td>14-10</td><td>Computing the Aggregate Unions Grouped by the ROWNUM Pseudo Column</td><td><a href="code/Chapter-14/listing-14-10.sql">listing-14-10.sql</a></td></tr>
+<tr><td>14-11</td><td>Computing the Aggregate Union of Aggregate Unions Grouped by the ROWNUM Pseudo-Column</td><td><a href="code/Chapter-14/listing-14-11.sql">listing-14-11.sql</a></td></tr>
+<tr><td>14-12</td><td>Computing the Aggregate Union in a Pipelined Fashion</td><td><a href="code/Chapter-14/listing-14-12.sql">listing-14-12.sql</a></td></tr>
+<tr><td>14-13</td><td>Setting the SDO_DML_BATCH_SIZE Parameter</td><td><a href="code/Chapter-14/listing-14-13.sql">listing-14-13.sql</a></td></tr>
+<tr><td>14-14</td><td>Creating a Partitioned Table for Storing Temporal Weather Pattern Data</td><td><a href="code/Chapter-14/listing-14-14.sql">listing-14-14.sql</a></td></tr>
+<tr><td>14-15</td><td>Creating a Local Partitioned Spatial Index</td><td><a href="code/Chapter-14/listing-14-15.sql">listing-14-15.sql</a></td></tr>
+<tr><td>14-16</td><td>Creating a Local Partitioned Spatial Index As 'Unusable'</td><td><a href="code/Chapter-14/listing-14-16.sql">listing-14-16.sql</a></td></tr>
+<tr><td>14-17</td><td>Rebuilding a Local Spatial Index</td><td><a href="code/Chapter-14/listing-14-17.sql">listing-14-17.sql</a></td></tr>
+<tr><td>14-18</td><td>Rebuilding All UNUSABLE Indexes for a Table Partition</td><td><a href="code/Chapter-14/listing-14-18.sql">listing-14-18.sql</a></td></tr>
+<tr><td>14-19</td><td>Exchanging tmp Data with Partition p1 of weather_patternsWithout Indexes</td><td><a href="code/Chapter-14/listing-14-19.sql">listing-14-19.sql</a></td></tr>
+<tr><td>14-20</td><td>Adding New Data Using the EXCHANGE PARTITION Clause</td><td><a href="code/Chapter-14/listing-14-20.sql">listing-14-20.sql</a></td></tr>
+<tr><td>14-21</td><td>Splitting the current_month Partition into march and current_month Partitions</td><td><a href="code/Chapter-14/listing-14-21.sql">listing-14-21.sql</a></td></tr>
+<tr><td>14-22</td><td>Rebuilding the Indexes for the 'Split' Partitions</td><td><a href="code/Chapter-14/listing-14-22.sql">listing-14-22.sql</a></td></tr>
+<tr><td>14-23</td><td>Merging the Partitions for jan and feb into a Single Partition</td><td><a href="code/Chapter-14/listing-14-23.sql">listing-14-23.sql</a></td></tr>
+<tr><td>14-24</td><td>Renaming a Partition</td><td><a href="code/Chapter-14/listing-14-24.sql">listing-14-24.sql</a></td></tr>
+<tr><td>14-25</td><td>Renaming the Merged Monthly Partition As a Year Partition</td><td><a href="code/Chapter-14/listing-14-25.sql">listing-14-25.sql</a></td></tr>
+<tr><td>14-26</td><td>Setting the location Column in the customers Table to a NULLValue</td><td><a href="code/Chapter-14/listing-14-26.sql">listing-14-26.sql</a></td></tr>
+<tr><td>14-27</td><td>Determining the SRIDValue in the Location (Geometry) Columns of a Table</td><td><a href="code/Chapter-14/listing-14-27.sql">listing-14-27.sql</a></td></tr>
+<tr><td>14-28</td><td>Determining the SRIDValue for a Spatial Layer (Specified by table_name, column_name)</td><td><a href="code/Chapter-14/listing-14-28.sql">listing-14-28.sql</a></td></tr>
+</table>
+
+<a name="appendix-a"><h2>Appendix A - Advanced Spatial Analysis</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>A-1</td><td>Tiling a Two-Dimensional Space</td><td><a href="code/Appendix-A/listing-A-01.sql">listing-A-01.sql</a></td></tr>
+<tr><td>A-2</td><td>Zip Code Table Used to Get Demographic Information</td><td><a href="code/Appendix-A/listing-A-02.sql">listing-A-02.sql</a></td></tr>
+<tr><td>A-3</td><td>Searching for Regions (Tiles) That Have a Population Greater Than 30,000</td><td><a href="code/Appendix-A/listing-A-03.sql">listing-A-03.sql</a></td></tr>
+<tr><td>A-4</td><td>Estimating the Population in Sales Region 1 Using the Demographic Information in the zip5_dc Table</td><td><a href="code/Appendix-A/listing-A-04.sql">listing-A-04.sql</a></td></tr>
+<tr><td>A-5</td><td>Estimating the Population for All Rows in the sales_regions Table Using Demographic Information in the zip5_dc Table</td><td><a href="code/Appendix-A/listing-A-05.sql">listing-A-05.sql</a></td></tr>
+<tr><td>A-6</td><td>Finding Three Clusters for Customer Locations</td><td><a href="code/Appendix-A/listing-A-06.sql">listing-A-06.sql</a></td></tr>
+<tr><td>A-7</td><td>Simplifying the Geometry for New Hampshire</td><td><a href="code/Appendix-A/listing-A-07.sql">listing-A-07.sql</a></td></tr>
+</table>
+
+<a name="appendix-b"><h2>Appendix B - Linear Referencing</h2>
+
+<a name="appendix-c"><h2>Appendix C - Topology Data Model</h2>
+
+<a name="appendix-d"><h2>Appendix D - GeoRaster</h2>
+<table border="1" width="950" cellpadding="0" cellspacing="0">
+<tr><th width="50">Listing</th><th align="left">Description</th><th align="left" width=120>File Name</th></tr>
+<tr><td>D-1</td><td>Altering the branches Table to Add the georaster Column</td><td><a href="code/Appendix-D/listing-D-01.sql">listing-D-01.sql</a></td></tr>
+<tr><td>D-2</td><td>Structure of SDO_GEORASTER</td><td><a href="code/Appendix-D/listing-D-02.sql">listing-D-02.sql</a></td></tr>
+<tr><td>D-3</td><td>Creating the Raster Data Table</td><td><a href="code/Appendix-D/listing-D-03.sql">listing-D-03.sql</a></td></tr>
+<tr><td>D-4</td><td>Creating a Trigger to Populate the Raster Data Table</td><td><a href="code/Appendix-D/listing-D-04.sql">listing-D-04.sql</a></td></tr>
+<tr><td>D-5</td><td>Initializing the georaster Column in the branches Table</td><td><a href="code/Appendix-D/listing-D-05.sql">listing-D-05.sql</a></td></tr>
+<tr><td>D-6</td><td>Populating the Georaster Column with a TIFF Image</td><td><a href="code/Appendix-D/listing-D-06.sql">listing-D-06.sql</a></td></tr>
+<tr><td>D-7</td><td>Granting Permissions to Import Data into a GeoRaster Column</td><td><a href="code/Appendix-D/listing-D-07.sql">listing-D-07.sql</a></td></tr>
+<tr><td>D-8</td><td>Generating Pyramids for a GeoRaster Object in the branches Table</td><td><a href="code/Appendix-D/listing-D-08.sql">listing-D-08.sql</a></td></tr>
+<tr><td>D-9</td><td>Subsetting a GeoRaster Object</td><td><a href="code/Appendix-D/listing-D-09.sql">listing-D-09.sql</a></td></tr>
+<tr><td>D-10</td><td>Georeferencing a GeoRaster Object</td><td><a href="code/Appendix-D/listing-D-10.sql">listing-D-10.sql</a></td></tr>
+<tr><td>D-11</td><td>Generating and Populating the Spatial Extent of the georaster Column</td><td><a href="code/Appendix-D/listing-D-11.sql">listing-D-11.sql</a></td></tr>
+<tr><td>D-12</td><td>Populating the Metadata for the Spatial Extent of the georaster Column</td><td><a href="code/Appendix-D/listing-D-12.sql">listing-D-12.sql</a></td></tr>
+<tr><td>D-13</td><td>Creating an Index on the Spatial Extent of the georaster Column</td><td><a href="code/Appendix-D/listing-D-13.sql">listing-D-13.sql</a></td></tr>
+<tr><td>D-14</td><td>Creating a Predefined Theme for the georaster Column in the branches Table</td><td><a href="code/Appendix-D/listing-D-14.sql">listing-D-14.sql</a></td></tr>
+<tr><td>D-15</td><td>Creating a Dynamic Theme for GeoRaster Objects</td><td><a href="code/Appendix-D/listing-D-15.xml">listing-D-15.xml</a></td></tr>
+</table>
+
+</body>
+</html>

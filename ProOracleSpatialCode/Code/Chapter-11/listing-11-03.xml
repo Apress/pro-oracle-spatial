@@ -1,0 +1,11 @@
+<!-- Listing 11-3 Define a Data Source -->
+<map_data_source name="spatial10g"
+  jdbc_host="127.0.0.1"
+  jdbc_port="1521"
+  jdbc_sid="orcl101"
+  jdbc_user="spatial"
+  jdbc_password="!spatial"
+  jdbc_mode="thin"
+  max_connections="5"
+  number_of_mappers="3"
+/>

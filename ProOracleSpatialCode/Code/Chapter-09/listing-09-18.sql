@@ -1,0 +1,12 @@
+-- Listing 9-18. Combining Listings 9-16 and 9-17
+SELECT ct.id, ct.name
+  FROM sales_regions sr, competitors_sales_regions csr, customers ct
+ WHERE csr.id=2
+   AND sr.id=6
+   AND SDO_RELATE
+       (
+         ct.location,
+         SDO_GEOM.SDO_DIFFERENCE(csr.geom, sr.geom, 0.5),
+         'mask=anyinteract'
+       )='TRUE'
+ ORDER BY ct.id;

@@ -1,0 +1,5 @@
+<!-- Listing 11-4 Setting the log level -->
+<logging log_level="info" log_thread_name="true" log_time="true">
+  <log_output name="System.err"/>
+  <log_output name="../log/mapviewer.log"/>
+</logging>

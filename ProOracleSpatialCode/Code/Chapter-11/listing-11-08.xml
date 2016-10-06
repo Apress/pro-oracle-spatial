@@ -1,0 +1,6 @@
+<!-- Listing 11-8 Defining a permanent OC4J data source -->
+<map_data_source name="spatial10g"
+  container_ds="jdbc/spatial10g"
+  max_connections="5"
+  number_of_mappers="3"
+/>

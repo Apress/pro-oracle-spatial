@@ -1,0 +1,14 @@
+-- Listing 12-4. Functions to Extract x and y Coordinates
+CREATE OR REPLACE FUNCTION get_point_x(g SDO_GEOMETRY)
+RETURN NUMBER IS
+BEGIN
+  RETURN g.SDO_POINT.X;
+END;
+/
+
+CREATE OR REPLACE FUNCTION get_point_y(g SDO_GEOMETRY)
+RETURN NUMBER IS
+BEGIN
+  RETURN g.SDO_POINT.Y;
+END;
+/

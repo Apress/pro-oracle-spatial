@@ -1,0 +1,186 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+EXEC SQL INCLUDE SQLCA ;
+EXEC SQL INCLUDE oraca.h ;
+EXEC SQL BEGIN DECLARE SECTION ;
+#include "geometry.h"
+EXEC SQL END   DECLARE SECTION ;
+
+#define DEBUG 1
+#define MAX_ORDINATES 32768
+
+EXEC SQL WHENEVER SQLERROR DO SqlError();
+
+void SqlError()
+{
+  char err_msg[128];
+  int buf_len, msg_len;
+
+  buf_len = sizeof (err_msg);
+  sqlglm(err_msg, &buf_len, &msg_len);
+  printf("SQL Error: %.*s\n", msg_len, err_msg);
+  exit(1);
+}
+
+
+DumpGeometry(
+       SDO_GEOMETRY *geometry,
+       SDO_GEOMETRY_ind *geometryInd,
+       long  ordinateArraySize
+       )
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+  SDO_GEOMETRY             *geometryObject ;
+  SDO_POINT_TYPE           *pointObject;
+  SDO_ELEM_INFO_ARRAY      *elemInfoArrayObject ;
+  SDO_ORDINATE_ARRAY       *ordinateArrayObject ;
+  SDO_GEOMETRY_ind         *geometryObjectInd ;
+  SDO_POINT_TYPE_ind       *pointObjectInd;
+  long                     nOrdinates;
+  long                     nElemInfo;
+  int                      gType;
+  int                      srId;
+  double                   x, y, z;
+  double                 ordinateValue;
+  double                 *ordinateArray;
+  int                      elementInfoValue;
+  long                     nOrdinatesSection;
+  EXEC SQL END DECLARE SECTION;
+
+  long i, j, k, n;
+
+  geometryObject = geometry;
+  geometryObjectInd = geometryInd;
+
+  printf ("SDO_GEOMETRY(");
+
+  if (geometryInd->SDO_GTYPE == 0) {
+    EXEC SQL OBJECT GET SDO_GTYPE FROM :geometryObject INTO :gType ;
+    printf ("%d, ", gType);
+  }
+  else
+    printf ("NULL, ");
+
+  if (geometryInd->SDO_SRID == 0) {
+    EXEC SQL OBJECT GET SDO_SRID FROM :geometryObject INTO :srId ;
+    printf ("%d, ", srId);
+  }
+  else
+    printf ("NULL, ");
+
+  pointObject = &(geometryObject->SDO_POINT);
+  pointObjectInd = &(geometryObjectInd->SDO_POINT);
+  if (pointObjectInd->_atomic == 0) {
+    printf ("SDO_POINT(");
+    if (pointObjectInd->X == 0) {
+      EXEC SQL OBJECT GET X FROM :pointObject INTO :x;
+      printf ("%g, ", x);
+    }
+    else
+      printf ("NULL, ");
+    if (pointObjectInd->Y == 0) {
+      EXEC SQL OBJECT GET Y FROM :pointObject INTO :y;
+      printf ("%g, ", y);
+    }
+    else
+      printf ("NULL, ");
+    if (pointObjectInd->Z == 0) {
+      EXEC SQL OBJECT GET Z FROM :pointObject INTO :z;
+      printf ("%g", z);
+    }
+    else
+      printf ("NULL");
+    printf ("), ");
+  }
+  else
+    printf ("NULL, ");
+
+  if (geometryInd->SDO_ELEM_INFO == 0) {
+    EXEC SQL ALLOCATE :elemInfoArrayObject;
+    EXEC SQL OBJECT GET SDO_ELEM_INFO FROM :geometryObject  INTO :elemInfoArrayObject ;
+    EXEC SQL COLLECTION DESCRIBE :elemInfoArrayObject GET SIZE INTO :nElemInfo;
+    printf ("SDO_ELEM_INFO_ARRAY(");
+    for (i=1; i<=nElemInfo; i++) {
+      EXEC SQL COLLECTION GET :elemInfoArrayObject INTO :elementInfoValue;
+      printf ("%d",elementInfoValue);
+      if (i < nElemInfo)
+        printf (", ");
+    }
+    printf ("), ");
+  }
+  else
+    printf ("NULL, ");
+
+  if (geometryInd->SDO_ORDINATES == 0) {
+    EXEC SQL ALLOCATE :ordinateArrayObject;
+    EXEC SQL OBJECT GET SDO_ORDINATES FROM :geometryObject  INTO :ordinateArrayObject ;
+    EXEC SQL COLLECTION DESCRIBE :ordinateArrayObject GET SIZE INTO :nOrdinates;
+    ordinateArray = (double *) calloc (ordinateArraySize, (size_t)sizeof(double));
+    printf ("SDO_ORDINATE_ARRAY(");
+    if (DEBUG)
+      printf ("\n[Getting %d ordinates]\n", nOrdinates);
+    for (i=0; i<nOrdinates; i=i+ordinateArraySize) {
+      nOrdinatesSection = nOrdinates - i;
+      if (nOrdinatesSection > ordinateArraySize)
+        nOrdinatesSection = ordinateArraySize;
+      if (DEBUG)
+        printf ("  [Getting %d ordinates [%d:%d]]\n",nOrdinatesSection, i+1, i+nOrdinatesSection);
+      EXEC SQL FOR :nOrdinatesSection
+          COLLECTION GET :ordinateArrayObject INTO :ordinateArray;
+      if (DEBUG)
+        if (sqlca.sqlerrd[2] != nOrdinatesSection)
+          printf ("  [***** error: only %d ordinates returned - %d missing]\n",
+            sqlca.sqlerrd[2], nOrdinatesSection - sqlca.sqlerrd[2]);
+      //printf ("%g", ordinateValue);
+      //if (i < nOrdinates)
+      //  printf (", ");
+    }
+    printf (")");
+  }
+  else
+    printf ("NULL");
+
+  printf (")\n");
+}
+
+int main(int argc, char **argv) {
+
+  EXEC SQL BEGIN DECLARE SECTION;
+    char  *connectionString;
+    long  id;
+    char  *sqlQuery;
+    SDO_GEOMETRY     *geometryObject;
+    SDO_GEOMETRY_ind *geometryObjectInd;
+  EXEC SQL END DECLARE SECTION;
+  long  ordinateArraySize;
+  int i;
+
+ if (argc <= 2) {
+    printf ("Usage: %s <connectionString> <id> <ordinateArraySize>\n", argv[0]);
+    exit(1);
+  }
+
+  i = 1;
+  connectionString = argv[i++];
+  id = atoi(argv[i++]);
+  if (argc > 3)
+    ordinateArraySize = atoi(argv[i++]);
+  else
+    ordinateArraySize = MAX_ORDINATES;
+
+  printf ("Connecting to database: %s\n", connectionString);
+  EXEC SQL CONNECT :connectionString ;
+
+  EXEC SQL ALLOCATE :geometryObject :geometryObjectInd ;
+
+  printf ("Fetching geometry %d - %d ordinates at a time\n", id, ordinateArraySize);
+  EXEC SQL SELECT GEOM INTO :geometryObject
+    FROM TEST WHERE ID = :id;
+
+  DumpGeometry ( geometryObject, geometryObjectInd, ordinateArraySize );
+
+  EXEC SQL COMMIT;
+
+  printf ("Done\n");
+}

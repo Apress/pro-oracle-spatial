@@ -1,0 +1,2 @@
+-- Listing 4-7. The MDSYS.CS_SRS Table
+DESCRIBE MDSYS.CS_SRS
